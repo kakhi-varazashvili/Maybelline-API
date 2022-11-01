@@ -2,7 +2,7 @@ let main = document.querySelector(".main")
 let inp = document.querySelector("input")
 let arr1 = []
 let arr2 = []
-// fetch("http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline")
+fetch("http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline");
 .then(x=> x.json())
 .then(arr=>{
 
