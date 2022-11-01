@@ -2,10 +2,9 @@ let main = document.querySelector(".main")
 let inp = document.querySelector("input")
 let arr1 = []
 let arr2 = []
-fetch("https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline")
+fetch("http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline")
 .then(x=> x.json())
 .then(arr=>{
-
     arr1 = arr
     arr2 = arr
     displayItems(arr)
@@ -29,11 +28,8 @@ fetch("https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline")
             this.innerText = "show more"
            }
         })
-    }
-
-  
+    } 
 })
-
 function displayItems(x){
     for(var i of x){
         let tmp = `
@@ -41,10 +37,7 @@ function displayItems(x){
   <img src="${i.image_link}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${i.name}</h5>
-
     <p class="card-text desc">${i.description}</p>
-    
-
     <button class="show">show more</button>
   </div>
   <ul class="list-group list-group-flush">
@@ -61,19 +54,15 @@ function displayItems(x){
         main.innerHTML += tmp
     }
 }
-
-
 inp.addEventListener("keyup",function(e){
     main.innerHTML = ""
     if(inp.value == ""){
        arr1 = arr2
        displayItems(arr1)
     }
-
     else{
         arr1 = arr2
         arr1 = arr1.filter(t=> t.name.toLowerCase().includes(inp.value.toLocaleLowerCase()))
         displayItems(arr1)
     }
 })
-
